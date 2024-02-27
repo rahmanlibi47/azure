@@ -65,7 +65,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: coderz
-          resource-group-name: tesla
+          resource-group: tesla
           slot-name: 'Production'
           package: .
           
