@@ -1,4 +1,4 @@
-ame: Build and deploy Node.js app to Azure Web App - coderz
+name: Build and deploy Node.js app to Azure Web App - coderz
 
 on:
   push:
