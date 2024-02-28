@@ -1,4 +1,5 @@
 import "./App.css";
+import Navbar from "./components/navbar";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
         <div>
           <div>
             <div>
+              <Navbar />
               <h2>Test Deploy</h2>
               <button>Button</button>
             </div>
