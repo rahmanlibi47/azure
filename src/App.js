@@ -1,5 +1,5 @@
 import "./App.css";
-import Navbar from "./components/navbar";
+import Navbars from "./components/navbar";
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
         <div>
           <div>
             <div>
-              <Navbar />
+              <Navbars />
               <h2>Test Deploy</h2>
               <button>Button</button>
             </div>
