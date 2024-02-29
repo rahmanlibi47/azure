@@ -4,10 +4,10 @@
 name: Build and deploy Node.js app to Azure Web App - backcoderz
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["coderz"]
+    types:
+      - completed
 
 jobs:
   build:
@@ -27,13 +27,13 @@ jobs:
           npm install
 
       - name: Zip artifact for deployment
-        run: zip backend.zip ./* -r -x "node_modules/*"
+        run: zip release.zip ./* -r -x "node_modules/*"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: node-app-backend
-          path: backend.zip
+          name: node-app
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,10 +48,10 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: node-app-backend
+          name: node-app
 
       - name: Unzip artifact for deployment
-        run: unzip backend.zip
+        run: unzip release.zip
       
       - name: Login to Azure
         uses: azure/login@v1
