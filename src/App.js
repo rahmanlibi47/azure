@@ -12,6 +12,7 @@ function App() {
               <Navbars />
               <h2 cl>New Services</h2>
               <button className="btn btn-danger">Button</button>
+              <button className="btn btn-success">New</button>
             </div>
           </div>
         </div>
