@@ -67,7 +67,7 @@ jobs:
           app-name: coderz
           resource-group-name: tesla
           slot-name: 'Production'
-          package: .
+          package: ./
       
       - name: 'Restart Azure Web App'
         run: az webapp restart --name coderz --resource-group tesla
