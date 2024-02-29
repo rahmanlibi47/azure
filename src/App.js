@@ -10,8 +10,8 @@ function App() {
           <div>
             <div>
               <Navbars />
-              <h2>Test Deploys</h2>
-              <button>Button</button>
+              <h2 cl>New Services</h2>
+              <button className="btn btn-danger">Button</button>
             </div>
           </div>
         </div>
