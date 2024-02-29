@@ -5,7 +5,7 @@ name: Build and deploy Node.js app to Azure Web App - backcoderz
 
 on:
   workflow_run:
-    workflows: ["coderz"]
+    workflows: ["main_coderz"]
     types:
       - completed
 
