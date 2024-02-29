@@ -68,4 +68,12 @@ jobs:
           resource-group-name: tesla
           slot-name: 'Production'
           package: .
-          
+      
+      - name: 'Restart Azure Web App'
+        run: |
+          az login --service-principal -u ${{ secrets.AZURE_APP_ID }} -p ${{ secrets.AZURE_PASSWORD }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+          az webapp restart --name coderz --resource-group tesla
+        env:
+          AZURE_APP_ID: ${{ secrets.AZURE_APP_ID }}
+          AZURE_PASSWORD: ${{ secrets.AZURE_PASSWORD }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
