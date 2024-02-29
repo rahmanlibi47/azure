@@ -27,13 +27,13 @@ jobs:
           CI=false npm run build
 
       - name: Zip artifact for deployment
-        run: zip -r node-app.zip . -x "node_modules/*"
+        run: zip -r release.zip . -x "node_modules/*"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: ./node-app.zip
+          path: ./release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
           name: node-app
 
       - name: Unzip artifact for deployment
-        run: unzip node-app.zip
+        run: unzip release.zip
       
       - name: Login to Azure
         uses: azure/login@v1
@@ -59,7 +59,7 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_05AF975F39B641D382B0AB9D4493572C }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_611924CC35E94C4FB07A0E39924A9024 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_7C3736AC60994FE1A4962CBB5931904D }}
-          
+
       - name: Install dependencies
         run: npm install
 
