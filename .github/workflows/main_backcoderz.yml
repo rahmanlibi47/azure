@@ -55,6 +55,11 @@ jobs:
           
       - name: Unzip backend.zip
         run: unzip ./backend.zip -d ./backend
+
+      - name: npm install
+        run: |
+          cd backend
+          npm install
       
       - name: Login to Azure
         uses: azure/login@v1
