@@ -68,5 +68,5 @@ jobs:
           app-name: 'backcoderz'
           resource-group-name: backend
           slot-name: 'Production'
-          package: ./backend
+          package: ./
           
