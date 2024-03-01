@@ -22,11 +22,6 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: npm install
-        run: |
-          cd backend
-          npm install
-
       - name: Zip artifact for deployment
         run: |
           cd backend
@@ -55,6 +50,9 @@ jobs:
           
       - name: Unzip backend.zip
         run: unzip ./backend.zip -d ./backend
+
+      - name: Delete backend.zip
+        run: rm ./backend.zip 
 
       - name: npm install
         run: |
