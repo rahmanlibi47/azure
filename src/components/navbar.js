@@ -9,8 +9,8 @@ function Navbars() {
         <Navbar.Brand style={{color:'white'}} href="/">Coderz</Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav  className="me-auto">
-            <Nav.Link style={{color:'white'}} href="/">Home</Nav.Link>
-            <Nav.Link style={{color:'white'}} href="/about">About</Nav.Link>
+            <Nav.Link className='hover-nav' style={{color:'white'}} href="/">Home</Nav.Link>
+            <Nav.Link className='hover-nav' style={{color:'white'}} href="/about">About</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

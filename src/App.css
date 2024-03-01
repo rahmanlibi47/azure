@@ -1,9 +1,19 @@
 .App {
   text-align: center;
-  background-color: #79985d;
+  color: #9c1c91;
+  background-image: url('assets/background.jpg')
+
 }
 
 
 html{
-  background-color: #79985d;
+  background-image: url('assets/background.jpg');
+}
+
+.hover-nav:hover {
+  background-color: #e6b609;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
 }
