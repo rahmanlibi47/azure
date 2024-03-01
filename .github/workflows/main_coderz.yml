@@ -27,7 +27,7 @@ jobs:
           GENERATE_SOURCEMAP=false npm run build
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip ./* -x "node_modules/*" -x "backend/*"
+        run: zip -r release.zip ./build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -51,10 +51,9 @@ jobs:
           name: node-app
 
       - name: Unzip artifact for deployment
-        run: unzip release.zip
-        
-      - name: Remove Release.zip
-        run: rm ./release.zip
+        run: |
+          unzip release.zip
+          rm ./release.zip
       
       - name: Login to Azure
         uses: azure/login@v1
