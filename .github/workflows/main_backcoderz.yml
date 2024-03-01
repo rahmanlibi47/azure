@@ -54,7 +54,7 @@ jobs:
           name: backend-app
           
       - name: Unzip backend.zip
-        run: unzip ./backend/backend.zip -d ./backend
+        run: unzip ./backend.zip -d ./
       
       - name: Login to Azure
         uses: azure/login@v1
