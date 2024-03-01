@@ -4,6 +4,10 @@
 name: backcoderz
 
 on:
+  workflow_run:
+    workflows: ["coderz"]
+    types:
+      - completed
   push:
     branches:
       - main
