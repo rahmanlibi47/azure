@@ -19,9 +19,19 @@ const Home = () => {
 
   return (
     <div>
-      <h2>Homepage</h2>
-      <br />
-      <p>Welcome to home</p>
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
