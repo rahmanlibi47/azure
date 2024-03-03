@@ -1,0 +1,77 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: backcoderz
+
+on:
+  workflow_run:
+    workflows: ["coderz"]
+    types:
+      - completed
+
+jobs:
+  build:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+
+      - name: Zip artifact for deployment
+        run: |
+          cd backend
+          zip backend.zip ./* -r -x "node_modules/*"
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: backend-app
+          path: ./backend/backend.zip
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: backend-app
+          
+      - name: Unzip backend.zip
+        run: unzip ./backend.zip -d ./backend
+
+      - name: Delete backend.zip
+        run: rm ./backend.zip 
+
+      - name: npm install
+        run: |
+          cd backend
+          npm install
+      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E64232B973794B40B8149647560731F9 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_87736A6AE4A04DC0927D8225411A45A1 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_26069F78EB5B4A39B6B355549C91C0E3 }}
+
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'backcoderz'
+          resource-group-name: backend
+          slot-name: 'Production'
+          package: ./
+          
