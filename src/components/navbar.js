@@ -22,8 +22,9 @@ function Navbars({ rotate, setRotate }) {
     <Nav.Link className='hover-nav' style={{ color: 'white' }} href="/about">About</Nav.Link>
   </div>
   <div style={{ display: 'flex', alignItems: 'center' }}>
-  <span style={{ marginRight: '10px', color: 'white' }}><LoopIcon/></span>
+ 
   <Switch checked={rotate} onChange={handleToggle} />
+  <span style={{color: 'white' }}><LoopIcon/></span>
 </div>
 </Nav>
         </Navbar.Collapse>
