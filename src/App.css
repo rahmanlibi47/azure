@@ -1,13 +1,47 @@
+body.rotate::before {
+  content: "";
+  position: fixed;
+  top: -75%;
+  left: -75%;
+  height: 250%;
+  width: 250%;
+  z-index: -1;
+  background: url('assets/background.jpg') center / cover fixed no-repeat;
+  animation: rotation 30s infinite linear;
+}
+
+body.static::before {
+  content: "";
+  position: fixed;
+  top: -75%;
+  left: -75%;
+  height: 250%;
+  width: 250%;
+  z-index: -1;
+  background: url('assets/background.jpg') center / cover fixed no-repeat;
+  animation: quickRotation 0.3s forwards;
+}
+
+@keyframes quickRotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 .App {
   text-align: center;
   color: #9c1c91;
-  background-image: url('assets/background.jpg')
-
-}
-
-
-html{
-  background-image: url('assets/background.jpg');
 }
 
 .hover-nav:hover {
