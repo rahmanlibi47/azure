@@ -32,9 +32,7 @@ jobs:
       - name: Download gdrive binary
         run: |
           wget -O gdrive.tar.gz https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_386.tar.gz
-          tar -xzvf gdrive.tar.gz gdrive-linux-x64
-          mv gdrive-linux-x64/gdrive .
-          rm -rf gdrive-linux-x64 gdrive.tar.gz
+          tar -xzvf gdrive.tar.gz --strip-components=1
           chmod +x gdrive
       
       - name: Authenticate with Google Drive
