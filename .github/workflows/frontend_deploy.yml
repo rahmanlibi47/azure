@@ -39,6 +39,11 @@ jobs:
 
       - name: Make gdrive executable
         run: sudo chmod +x /usr/local/bin/gdrive
+
+      - name: Print debug info
+        run: |
+          echo $PATH
+          ls -l /usr/local/bin
       
       - name: Authenticate with Google Drive
         env:
