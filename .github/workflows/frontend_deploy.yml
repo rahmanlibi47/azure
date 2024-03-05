@@ -34,12 +34,12 @@ jobs:
           wget -O gdrive https://github.com/gdrive-org/gdrive/releases/download/2.1.0/gdrive-linux-x64
           chmod +x gdrive
 
+      - name: Authenticate with Google Drive
+        run: ./gdrive about
+
       - name: Upload artifact to Google Drive
-        uses: peaceiris/actions-github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            ./gdrive upload --parent "azure_deploy" release.zip
+        run: |
+          ./gdrive upload --parent "azure_deploy" release.zip
 
   deploy:
     runs-on: ubuntu-latest
