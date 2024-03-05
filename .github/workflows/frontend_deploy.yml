@@ -31,15 +31,20 @@ jobs:
 
       - name: Download gdrive binary
         run: |
-          wget -O gdrive.tar.gz https://github.com/gdrive-org/gdrive/releases/download/2.1.0/gdrive-linux-x64.tar.gz
-          tar -xzvf gdrive.tar.gz gdrive
+          wget -O gdrive https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download
           chmod +x gdrive
+          sudo mv gdrive /usr/local/bin/gdrive
+      
       - name: Authenticate with Google Drive
-        run: ./gdrive about
-
+        env:
+          GDRIVE_TOKEN: ${{ secrets.GDRIVE_TOKEN }}
+        run: |
+          echo $GDRIVE_TOKEN > token_v2.json
+          gdrive about
+      
       - name: Upload artifact to Google Drive
         run: |
-          ./gdrive upload --parent "azure_deploy" release.zip
+          gdrive upload --parent "azure_deploy" release.zip
 
   deploy:
     runs-on: ubuntu-latest
