@@ -36,6 +36,9 @@ jobs:
           chmod +x gdrive
           sudo mv gdrive /usr/local/bin/gdrive
           sudo chown root:root /usr/local/bin/gdrive  # Change the owner to root
+
+      - name: Make gdrive executable
+        run: sudo chmod +x /usr/local/bin/gdrive
       
       - name: Authenticate with Google Drive
         env:
