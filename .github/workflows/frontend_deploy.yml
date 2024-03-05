@@ -44,19 +44,15 @@ jobs:
         run: |
           echo $PATH
           ls -l /usr/local/bin
-      
-      - name: Authenticate with Google Drive
+            
+      - name: Upload artifact to Google Drive
         env:
           GDRIVE_SERVICE_ACCOUNT_CREDENTIALS: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_CREDENTIALS }}
         run: |
           echo "$GDRIVE_SERVICE_ACCOUNT_CREDENTIALS" > service_account.json
           mkdir -p /home/runner/.gdrive
           mv service_account.json /home/runner/.gdrive/
-          gdrive --service-account service_account.json about
-            
-      - name: Upload artifact to Google Drive
-        run: |
-          gdrive upload --parent "azure_deploy" release.zip
+          gdrive --service-account service_account.json upload --parent "azure_deploy" release.zip
 
   deploy:
     runs-on: ubuntu-latest
