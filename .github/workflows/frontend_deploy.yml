@@ -83,8 +83,12 @@ jobs:
           mkdir -p /home/runner/.gdrive
           mv service_account.json /home/runner/.gdrive/
           gdrive --service-account service_account.json about
-          LATEST_FILE_ID=$(gdrive --service-account service_account.json list --query "name contains 'release_' and mimeType = 'application/zip'" --order "modifiedTime desc" --no-header --max 1 | sed -n 's/^\([^\s]\+\)\s\+[^\s]\+\s\+[^\s]\+\s\+[^\s]\+\s\+\([^\s]\+\)\s.*$/\2/p')
+          LIST_OUTPUT=$(gdrive --service-account service_account.json list --query "name contains 'release_' and mimeType = 'application/zip'" --order "modifiedTime desc" --no-header --max 1)
+          echo "List Output: $LIST_OUTPUT"
+          LATEST_FILE_ID=$(echo "$LIST_OUTPUT" | awk '{print $1}')
+          echo "Latest File ID: $LATEST_FILE_ID"
           gdrive --service-account service_account.json download --path . "$LATEST_FILE_ID"
+
 
         
 
