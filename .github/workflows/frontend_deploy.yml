@@ -31,9 +31,11 @@ jobs:
 
       - name: Download gdrive binary
         run: |
-          wget -O gdrive "https://drive.google.com/uc?id=1WZV7YjybbZnH6fqxXJYyZV3Kj7zCRSFf&export=download"
+          wget -O gdrive.tar.gz https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive-linux-x64.tar.gz
+          tar -xzvf gdrive.tar.gz gdrive-linux-x64
+          mv gdrive-linux-x64/gdrive .
+          rm -rf gdrive-linux-x64 gdrive.tar.gz
           chmod +x gdrive
-          sudo mv gdrive /usr/local/bin/gdrive
       
       - name: Authenticate with Google Drive
         env:
