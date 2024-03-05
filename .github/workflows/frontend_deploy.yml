@@ -42,7 +42,7 @@ jobs:
           GDRIVE_TOKEN: ${{ secrets.GDRIVE_TOKEN }}
         run: |
           echo $GDRIVE_TOKEN > token_v2.json
-          gdrive about
+          /usr/local/bin/gdrive about
       
       - name: Upload artifact to Google Drive
         run: |
