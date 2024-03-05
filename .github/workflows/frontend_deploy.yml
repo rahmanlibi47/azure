@@ -68,7 +68,7 @@ jobs:
   
       - name: Download artifact from Google Drive
         run: |
-          gdrive --service-account service_account.json download --path . <file_id>
+          gdrive --service-account service_account.json download --path . "1RE00_Lmg7DQ4A6yLjWJWv7NKMBJas000"
 
       - name: Unzip artifact for deployment
         run: |
