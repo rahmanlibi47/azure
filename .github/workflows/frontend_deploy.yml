@@ -40,11 +40,6 @@ jobs:
       - name: Make gdrive executable
         run: sudo chmod +x /usr/local/bin/gdrive
 
-      - name: Print debug info
-        run: |
-          echo $PATH
-          ls -l /usr/local/bin
-
       - name: Authenticate with Google Drive
         env:
           GDRIVE_SERVICE_ACCOUNT_CREDENTIALS: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_CREDENTIALS }}
