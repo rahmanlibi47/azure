@@ -83,8 +83,9 @@ jobs:
           mkdir -p /home/runner/.gdrive
           mv service_account.json /home/runner/.gdrive/
           gdrive --service-account service_account.json about
-          LATEST_FILE_ID=$(gdrive --service-account service_account.json list --query "name = 'release_' and mimeType = 'application/zip'" --order "modifiedTime desc" --no-header --max 1 | awk '{print $1}')
+          LATEST_FILE_ID=$(gdrive --service-account service_account.json list --query "name contains 'release_' and mimeType = 'application/zip'" --order "modifiedTime desc" --no-header --max 1 | sed -n 's/^\([^\s]\+\)\s\+[^\s]\+\s\+[^\s]\+\s\+[^\s]\+\s\+\([^\s]\+\)\s.*$/\2/p')
           gdrive --service-account service_account.json download --path . "$LATEST_FILE_ID"
+
         
 
       - name: Unzip artifact for deployment
