@@ -60,10 +60,15 @@ jobs:
       id-token: write #This is required for requesting the JWT
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: node-app
+      - name: Setup gdrive
+        run: |
+          echo "$GDRIVE_SERVICE_ACCOUNT_CREDENTIALS" > service_account.json
+          mkdir -p /home/runner/.gdrive
+          mv service_account.json /home/runner/.gdrive/
+  
+      - name: Download artifact from Google Drive
+        run: |
+          gdrive --service-account service_account.json download --path . <file_id>
 
       - name: Unzip artifact for deployment
         run: |
