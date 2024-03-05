@@ -89,13 +89,11 @@ jobs:
           echo "Latest File ID: $LATEST_FILE_ID"
           gdrive --service-account service_account.json download --path . "$LATEST_FILE_ID"
 
-
-        
-
       - name: Unzip artifact for deployment
         run: |
-          unzip release.zip
-          rm ./release.zip
+          unzip "*.zip"
+          rm ./*.zip
+
       
       - name: Login to Azure
         uses: azure/login@v1
