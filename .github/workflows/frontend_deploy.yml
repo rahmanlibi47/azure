@@ -52,6 +52,8 @@ jobs:
           mkdir -p /home/runner/.gdrive
           mv service_account.json /home/runner/.gdrive/
           gdrive --service-account service_account.json about
+          CURRENT_DATE=$(date +"%Y-%m-%d")
+          ZIP_FILE="release_${CURRENT_DATE}.zip"
           LATEST_FILE=$(ls -t | head -n1)
           gdrive --service-account service_account.json upload --parent "1RE00_Lmg7DQ4A6yLjWJWv7NKMBJas000" "$ZIP_FILE"
 
