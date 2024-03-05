@@ -73,9 +73,6 @@ jobs:
           echo "$GDRIVE_SERVICE_ACCOUNT_CREDENTIALS" > service_account.json
           mkdir -p /home/runner/.gdrive
           mv service_account.json /home/runner/.gdrive/
-  
-      - name: Download artifact from Google Drive
-        run: |
           gdrive --service-account service_account.json download --path . "1RE00_Lmg7DQ4A6yLjWJWv7NKMBJas000"
         
 
