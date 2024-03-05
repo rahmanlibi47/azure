@@ -50,8 +50,10 @@ jobs:
           GDRIVE_SERVICE_ACCOUNT_CREDENTIALS: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_CREDENTIALS }}
         run: |
           echo "$GDRIVE_SERVICE_ACCOUNT_CREDENTIALS" > service_account.json
-          gdrive --service-account service_account.json about
-      
+          mkdir -p /home/runner/.gdrive
+          mv service_account.json /home/runner/.gdrive/
+          gdrive --service-account /home/runner/.gdrive/service_account.json about
+            
       - name: Upload artifact to Google Drive
         run: |
           gdrive upload --parent "azure_deploy" release.zip
