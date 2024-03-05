@@ -31,7 +31,7 @@ jobs:
 
       - name: Download gdrive binary
         run: |
-          wget -O gdrive https://github.com/gdrive-org/gdrive/releases/download/2.1.0/gdrive-linux-x64
+          wget -O gdrive https://github.com/gdrive-org/gdrive/releases/latest/download/gdrive-linux-x64
           chmod +x gdrive
 
       - name: Authenticate with Google Drive
