@@ -53,7 +53,7 @@ jobs:
           mkdir -p /home/runner/.gdrive
           mv service_account.json /home/runner/.gdrive/
           gdrive --service-account service_account.json about
-          gdrive --service-account service_account.json upload --parent "azure_deploy" release.zip
+          gdrive --service-account service_account.json upload --parent "1zFOcC1VvcFkmPTZaR_46-xCAgUTT34UT" release.zip
 
   deploy:
     runs-on: ubuntu-latest
