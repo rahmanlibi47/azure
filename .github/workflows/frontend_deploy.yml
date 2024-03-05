@@ -31,7 +31,7 @@ jobs:
 
       - name: Download gdrive binary
         run: |
-          wget -O gdrive.tar.gz https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_amd64.tar.gz
+          wget -O gdrive.tar.gz https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_386.tar.gz
           tar -xzvf gdrive.tar.gz
           chmod +x gdrive
           sudo mv gdrive /usr/local/bin/gdrive
