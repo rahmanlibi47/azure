@@ -47,10 +47,10 @@ jobs:
       
       - name: Authenticate with Google Drive
         env:
-          GDRIVE_TOKEN: ${{ secrets.GDRIVE_TOKEN }}
+          GDRIVE_SERVICE_ACCOUNT_CREDENTIALS: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_CREDENTIALS }}
         run: |
-          echo $GDRIVE_TOKEN > token_v2.json
-          /usr/local/bin/gdrive about
+          echo "$GDRIVE_SERVICE_ACCOUNT_CREDENTIALS" > service_account.json
+          gdrive --service-account service_account.json about
       
       - name: Upload artifact to Google Drive
         run: |
