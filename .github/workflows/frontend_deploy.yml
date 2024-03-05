@@ -29,7 +29,8 @@ jobs:
       - name: Zip artifact for deployment
         run: |
           CURRENT_DATE=$(date +"%Y-%m-%d")
-          zip -r "release_${CURRENT_DATE}.zip" ./build
+          ZIP_FILE="release_${CURRENT_DATE}.zip"
+          zip -r "$ZIP_FILE" ./build
 
 
       - name: Download gdrive binary
@@ -51,7 +52,8 @@ jobs:
           mkdir -p /home/runner/.gdrive
           mv service_account.json /home/runner/.gdrive/
           gdrive --service-account service_account.json about
-          gdrive --service-account service_account.json upload --parent "1zFOcC1VvcFkmPTZaR_46-xCAgUTT34UT" release.zip
+          LATEST_FILE=$(ls -t | head -n1)
+          gdrive --service-account service_account.json upload --parent "1RE00_Lmg7DQ4A6yLjWJWv7NKMBJas000" "$ZIP_FILE"
 
   deploy:
     runs-on: ubuntu-latest
