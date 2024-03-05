@@ -31,7 +31,7 @@ jobs:
 
       - name: Download gdrive binary
         run: |
-          wget -O gdrive https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download
+          wget -O gdrive "https://drive.google.com/uc?id=1WZV7YjybbZnH6fqxXJYyZV3Kj7zCRSFf&export=download"
           chmod +x gdrive
           sudo mv gdrive /usr/local/bin/gdrive
       
