@@ -55,7 +55,7 @@ jobs:
           CURRENT_DATE=$(date +"%Y-%m-%d")
           ZIP_FILE="release_${CURRENT_DATE}.zip"
           LATEST_FILE=$(ls -t | head -n1)
-          gdrive --service-account service_account.json upload --parent "1RE00_Lmg7DQ4A6yLjWJWv7NKMBJas000" "$ZIP_FILE"
+          gdrive --service-account service_account.json upload --parent "1zFOcC1VvcFkmPTZaR_46-xCAgUTT34UT" "$ZIP_FILE"
 
   deploy:
     runs-on: ubuntu-latest
